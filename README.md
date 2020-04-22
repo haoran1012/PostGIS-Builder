@@ -47,7 +47,8 @@ Nagios Module:
 ![POstGIS](docs/_static/postgis.png)
 
 # Notes
-	- pg_tileserv is on port 7800, pg_featureserv is n port 9000
+	- pg_tileserv is on port 7800
+	- pg_featureserv is n port 9000
 
 # Links
 	[raster2pgsql](https://subscription.packtpub.com/book/big_data_and_business_intelligence/9781784391645/1/ch01lvl1sec7/loading-rasters-using-raster2pgsql)
