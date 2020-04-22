@@ -16,21 +16,21 @@ PostGIS Module
     :maxdepth: 3
     :caption: Components
 
-    components/general/index
-    components/tomcat/index
     components/postgresql/index
     components/postgis/index
     components/pgrouting/index
-    components/geoserver/index
     components/shp2pgsql/index
+    components/osm2pgsql/index
+    components/raster2pgsql/index
+    
     
 .. toctree::
     :maxdepth: 2
-    :caption: Web Apps
+    :caption: Database
 
-    webapps/homepage
-    webapps/openlayers
-    webapps/leafletjs
+    database/snapshot
+    database/clone
+    database/restore
     
     
 .. toctree::
