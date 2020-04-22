@@ -1,4 +1,4 @@
-Nagios Module
+PostGIS Module
 ==================================================
 
 .. include:: ../README.rst
@@ -15,26 +15,23 @@ Nagios Module
    
 .. toctree::
     :maxdepth: 3
-    :caption: Editors
+    :caption: Components
 
-    editors/nagios/nagiosconfs
-    editors/objects/objectconfs
-
+    components/postgresql/index
+    components/postgis/index
+    components/shp2pgsql/index
+    components/raster2pgsql/index
+    components/osm2pgsql/index
     
 .. toctree::
     :maxdepth: 2
-    :caption: Services
+    :caption: Databases
 
-    services/nagios/index
-    services/nrpe/index
+    databases/snapshot/index
+    databases/clone/index
+    databases/restore/index
+    databases/reports/index    
     
-    
-.. toctree::
-    :maxdepth: 2
-    :caption: Nrpe Agent
-    
-    client/nrpe/index
-
 .. toctree::
     :maxdepth: 2
     :caption: Resources
