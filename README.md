@@ -56,7 +56,7 @@ Nagios Module:
 [pgrouting](http://docs.pgrouting.org/)<br>
 [osm2pgsql](https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md)<br>
 [raster2pgsql](http://postgis.refractions.net/docs/using_raster.xml.html)<br>
-[og_tileserv](https://github.com/CrunchyData/pg_tileserv)<br>
+[pg_tileserv](https://github.com/CrunchyData/pg_tileserv)<br>
 [pg_featureserv](https://github.com/CrunchyData/pg_featureserv)<br>
 [gdal](https://gdal.org/)<br>
 
