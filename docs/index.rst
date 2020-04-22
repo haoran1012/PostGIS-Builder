@@ -1,6 +1,8 @@
 PostGIS Module
 ==================================================
 
+ .. image:: _static/postgis.png
+
 .. include:: ../README.rst
 
 .. toctree::
