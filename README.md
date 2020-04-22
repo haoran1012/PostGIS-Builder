@@ -3,6 +3,8 @@
 
 [![Documentation Status](https://readthedocs.org/projects/nagios-webmin-module/badge/?version=latest)](https://nagios-module.citedcorp.com/en/latest/?badge=latest)
 
+
+
 # Info
 PostGIS Module for Webmin.  Install and Manage Nagios Core and nrpe.
 
@@ -42,7 +44,7 @@ Please report issue here
 
 Nagios Module:
 
-![Nagios](docs/_static/nagios-main.png)
+![POstGIS](docs/_static/postgis.png)
 
 # Notes
 	- pg_tileserv is on port 7800, pg_featureserv is n port 9000
