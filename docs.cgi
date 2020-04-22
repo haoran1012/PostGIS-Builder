@@ -15,14 +15,18 @@ print "<br><br>";
 print "PgRouting Docs:  <a href='http://docs.pgrouting.org/' target='_blank'>http://docs.pgrouting.org/</a>";
 print "<br><br>";
 
-print "osm2pgsql Docs:  <a href='https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md
-' target='_blank'>https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md
+print "osm2pgsql Docs:  <a href='https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md' target='_blank'>https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md
 </a>";
 print "<br><br>";
 
-print "raster2pgsql Docs:  <a href='http://postgis.refractions.net/docs/using_raster.xml.html
-' target='_blank'>http://postgis.refractions.net/docs/using_raster.xml.html
+print "raster2pgsql Docs:  <a href='http://postgis.refractions.net/docs/using_raster.xml.html' target='_blank'>http://postgis.refractions.net/docs/using_raster.xml.html
 </a>";
+print "<br><br>";
+
+print "pg_tileserve Docs:  <a href='https://github.com/CrunchyData/pg_tileserv' target='_blank'>https://github.com/CrunchyData/pg_tileserv</a>";
+print "<br><br>";
+
+print "pg_featureserv Docs:  <a href='https://github.com/CrunchyData/pg_featureserv' target='_blank'>https://github.com/CrunchyData/pg_featureserv</a>";
 print "<br><br>";
 
 print "GDAL Docs:  <a href='https://gdal.org/' target='_blank'>https://gdal.org/</a>";
