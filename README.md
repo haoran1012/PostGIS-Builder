@@ -51,14 +51,14 @@ Nagios Module:
 	- pg_featureserv is n port 9000
 
 # Links
-Module:    https://postgis-module.docs.acugis.com<br>
-PostGIS:   https://postgis.net/documentation/<br>
-PgRouting: http://docs.pgrouting.org/<br>
-osm2pgsql: https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md<br>
-raster2pgsql:  http://postgis.refractions.net/docs/using_raster.xml.html<br>
-pg_tileserve:  https://github.com/CrunchyData/pg_tileserv<br>
+Module:         https://postgis-module.docs.acugis.com<br>
+PostGIS:        https://postgis.net/documentation/<br>
+PgRouting:      http://docs.pgrouting.org/<br>
+osm2pgsql:      https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md<br>
+raster2pgsql:   http://postgis.refractions.net/docs/using_raster.xml.html<br>
+pg_tileserve:   https://github.com/CrunchyData/pg_tileserv<br>
 pg_featureserv: https://github.com/CrunchyData/pg_featureserv<br>
-GDAL: https://gdal.org/<br>
+GDAL:           https://gdal.org/<br>
 
 Note: You can add docs and other links via /postgis/docs.cgi
 
