@@ -19,7 +19,7 @@ DISTRO=$(grep -m 1 ID /etc/os-release | cut -f2 -d= | tr -d '"')
 DISTRO_VER=$(grep VERSION_ID /etc/os-release | tr -d '"' | cut -f2 -d=)
 WWW_USER='www-data'
 
-
+#Install Webmin
 function install_webmin(){
 
 	if [ "${DISTRO}" == 'ubuntu' ]; then
@@ -44,8 +44,7 @@ EOF
 
 	fi
 }
-
-
+#Download PostGIS Webmin Module
 function download_postgis_module(){
 
 	pushd /opt/
@@ -58,7 +57,7 @@ function download_postgis_module(){
 	popd
   
 }
-
+#Download Certbot Webmin Module
 function download_certbot_module(){
 pushd /tmp/
 	wget https://github.com/cited/Certbot-Webmin-Module/archive/master.zip
@@ -68,7 +67,7 @@ pushd /tmp/
 	rm -rf certbot master.zip
 popd
 }
-
+#Install Apache HTTP Server
 function install_apache(){
 	if [ "${DISTRO}" == 'ubuntu' ]; then
 		apt-get -y install apache2
@@ -85,8 +84,7 @@ function dbd_pg(){
 		yum -y perl-DBD-Pg
 	fi
 }
-
-
+#Install PostGIS Webmin Module
 function install_postgis_module(){
 pushd /opt/
         if [ "${DISTRO}" == 'ubuntu' ]; then
@@ -98,7 +96,7 @@ popd
         echo -e "PostGIS Module is now installed. Go to Servers > PostGIS to complete installation"
 	
 }
-
+#Install Certbot Webmin Module
 function install_certbot_module(){
 pushd /opt/
 	if [ "${DISTRO}" == 'ubuntu' ]; then
@@ -108,15 +106,8 @@ pushd /opt/
         fi
 popd
         echo -e "Certbot is now installed. Go to Servers > Certbot to complete installation"
-	
 }	
-
-
-
-
-
 #Create certificate for use by postgres
-
 function make_cert_key(){
   name=$1
 
@@ -133,10 +124,7 @@ function make_cert_key(){
 
   openssl req -new -key ${name}.key -days 3650 -out ${name}.crt -passin pass:${SSL_PASS} -x509 -subj "/C=CA/ST=Frankfurt/L=Frankfurt/O=${HNAME}/CN=${HNAME}/emailAddress=info@acugis.com"
 }
-
 #Install PostgreSQL
-
-
 function install_postgresql_ubuntu(){
 	RELEASE=$(lsb_release -cs)
 
@@ -201,7 +189,7 @@ CMD_EOF
 
 	service postgresql restart
 }
-
+#PostgreSQL on CentOS 8
 function install_postgresql_centos(){
 	#1. Install PostgreSQL repo
 	PG_V2=$(echo ${PG_VER} | sed 's/\.//')
@@ -269,9 +257,7 @@ CMD_EOF
 	systemctl restart postgresql-${PG_VER}
 	systemctl enable postgresql-${PG_VER}
 }
-
 #Set up postgresql for Crunchy Data stuff
-
 function crunchy_setup_pg(){
 
   if [ $DISTRO == 'ubuntu' ]; then
@@ -294,8 +280,6 @@ CMD_EOF
 }
 
 #Load Natual Earth data for testing
-
-
 function load_pg_data(){
   pushd /home/${APPUSER}
     wget -P/tmp/ https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip
@@ -314,8 +298,6 @@ function load_pg_data(){
 }
 
 #Install pg_tileserv and config to run as a service
-
-
 function install_pg_tileserv(){
   TILESERV_HOME='/opt/pg_tileserv'
   mkdir -p ${TILESERV_HOME}
@@ -331,13 +313,9 @@ function install_pg_tileserv(){
      	mv pg_tileserv.toml.example pg_tileserv.toml
     popd
   popd
-
-
-
   chown -R ${APPUSER}:${APPUSER} ${TILESERV_HOME}
 
 #The service file
-
   cat >/etc/systemd/system/pg_tileserv.service <<CMD_EOF
 [Unit]
 Description=PG TileServ
@@ -350,8 +328,6 @@ Type=simple
 Restart=always
 ExecStart=${TILESERV_HOME}/pg_tileserv --config ${TILESERV_HOME}/config/pg_tileserv.toml
 
-
-
 [Install]
 WantedBy=multi-user.target
 CMD_EOF
@@ -362,7 +338,6 @@ CMD_EOF
 }
 
 #Install pg_featureserv and config to run as a service
-
 function install_pg_featureserv(){
   FEATSERV_HOME='/opt/pg_featureserv'
   mkdir -p ${FEATSERV_HOME}
@@ -406,32 +381,29 @@ CMD_EOF
 
 }
 
+#Display info for user
 function info_for_user()
-
 {
-
 #End message for user
-
 echo -e "Installation is now completed."
 echo -e "Access pg-tileserv at ${HNAME}:7800"
 echo -e "Access pg-featureserv at ${HNAME}:9000"
 echo -e "postgres and crunchy pg passwords are saved in /root/auth.txt file"
-
 }
-
+#User set up
 function setup_user(){
   useradd -m ${APPUSER}
 
   echo "${APPUSER}:${APPUSER}:${PG_PASS}" >/home/${APPUSER}/.pgpass
   chown ${APPUSER}:${APPUSER} /home/${APPUSER}/.pgpass
 }
-
+#Install bootstrap app
 function install_bootstrap_app(){
   wget -P/tmp https://cdn.acugis.com/geohelm/docs.tar.bz2
   tar -x --overwrite -f /tmp/docs.tar.bz2 -C/var/www/html
   rm -f /tmp/docs.tar.bz2
 }
-
+#Install ol latest
 function install_openlayers(){
   OL_VER=$(wget -q -L -O- https://github.com/openlayers/openlayers/releases/latest | sed -n 's/.*<title>Release v\([0-9\.]\+\).*/\1/p')
 
@@ -443,7 +415,7 @@ function install_openlayers(){
 
   chown -R $WWW_USER:$WWW_USER /var/www/html/OpenLayers
 }
-
+#Install leaflet latest
 function install_leafletjs(){
   LL_VER=$(wget -q -O- 'http://leafletjs.com/download.html' | sed -n 's/.*cdn\.leafletjs\.com\/leaflet\/v\([0-9\.]\+\)\/leaflet\.zip.*/\1/p' | sort -rn | head -1)
 
@@ -453,11 +425,11 @@ function install_leafletjs(){
   rm -f /tmp/leaflet.zip
   chown -R $WWW_USER:$WWW_USER /var/www/html/leafletjs
 }
-
+#Ubuntu prerqs
 function install_postgis_pkgs_ubuntu(){
   apt-get install -y postgis postgresql-${PG_VER}-pgrouting-scripts postgresql-${PG_VER}-pgrouting osm2pgsql osm2pgrouting
 }
-
+#Install osm2pgsql from source
 function install_osm2pgsql_source(){
 
 	wget -P/tmp https://github.com/openstreetmap/osm2pgsql/archive/master.zip
@@ -474,7 +446,7 @@ function install_osm2pgsql_source(){
 	popd
 	rm -rf osm2pgsql-master
 }
-
+#Install osm2pgrouting from source
 function install_osm2pgrouting_source(){
 	wget -P/tmp https://github.com/pgRouting/osm2pgrouting/archive/master.zip
 	unzip /tmp/master.zip
@@ -490,7 +462,7 @@ function install_osm2pgrouting_source(){
 	popd
 	rm -rf osm2pgrouting-master
 }
-
+#Install centos deps
 function install_postgis_pkgs_centos(){
 	#proj-epsg is missing in CentOS 8
 	dnf install -y cmake make gcc-c++ boost-devel expat-devel zlib-devel \
