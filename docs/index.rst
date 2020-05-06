@@ -24,7 +24,8 @@ PostGIS Module
     components/shp2pgsql/index
     components/osm2pgsql/index
     components/raster2pgsql/index
-    
+    components/pgtileserv/index
+    components/pgfeatureserv/index   
     
 .. toctree::
     :maxdepth: 2
@@ -37,17 +38,14 @@ PostGIS Module
     
 .. toctree::
     :maxdepth: 2
-    :caption: Scripts
+    :caption: Apps
 
-    scripts/cors
-    scripts/csrf
-    scripts/securedeb
-    scripts/securerhel
+    apps/geodjango
+    apps/geojson
+    apps/pgtileserv
+    apps/nodejs
     
-    
-    
-
-
+  
 .. toctree::
     :maxdepth: 2
     :caption: Resources
