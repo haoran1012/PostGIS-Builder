@@ -31,9 +31,9 @@ PostGIS Module
     :maxdepth: 2
     :caption: Database
 
-    database/snapshot
-    database/clone
-    database/restore
+    database/snapshot/index
+    database/clone/index
+    database/restore/index
     
     
 .. toctree::
