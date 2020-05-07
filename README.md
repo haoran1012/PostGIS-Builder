@@ -10,12 +10,16 @@ PostGIS Module for Webmin.  Install and Manage PostGIS, along with PgRouting, sh
 
 # Operating Systems
 Ubuntu 18
+
 Ububtu 20
+
 CentOS 8
 
 # Systems Requirements
 5 GB SSD
+
 1 GB RAM (Ubuntu)
+
 2 GB RAM (CentOS - required for osm2pgsql build)
 
 # Install via script:
