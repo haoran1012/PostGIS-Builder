@@ -7,7 +7,7 @@
    :width: 1em
 
 **********************
-General
+osm2pgsql
 **********************
 
 .. contents:: Table of Contents
