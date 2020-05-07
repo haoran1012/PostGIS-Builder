@@ -7,7 +7,7 @@
    :width: 1em
 
 ***************************
-Objects Configuration Files
+Database Snapshots
 ***************************
 
 .. contents:: Table of Contents
