@@ -7,7 +7,7 @@
    :width: 1em
 
 **********************
-PostGIS
+pg_tileserv
 **********************
 
 .. contents:: Table of Contents
