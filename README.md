@@ -6,7 +6,7 @@
 
 
 # Info
-PostGIS Module for Webmin.  Install and Manage PostGIS, along with PgRouting, shp2pgsql, osm2pgsql, and raster2pgsql.
+PostGIS Module for Webmin.  <br>Install and Manage PostGIS, along with PgRouting, shp2pgsql, osm2pgsql, and raster2pgsql.
 
 # Operating Systems
 Ubuntu 18<br>
