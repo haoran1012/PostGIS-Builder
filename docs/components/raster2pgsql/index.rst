@@ -7,113 +7,137 @@
    :width: 1em
 
 **********************
-Apache Tomcat
+raster2pgsql
 **********************
 
 .. contents:: Table of Contents
+Shape Loader Tool
+=================
 
-Layout
-======
+GeoHelm includes a shp2pgsql tool that can used to load shape files into PostGIS via Webmin.
 
-For installations done using the Wizard, the Apache Tomcat (CATALINA) home directory is::
+1. Load using the Shape File Loader.
 
-   /home/tomcat/apache-tomcat-v/
-   
-Where apache-tomcat-v is the version you chose to install.
-
-The CATALINA_HOME variable is set both in the Tomcat init script as well as setenv.sh files.
+2. Load using command line.
 
 
-Starting and Stopping
+Load via Shape File Loader
+==========================
+
+Click the Shape File Loader tab as shown below
+
+.. image:: _static/shp2pgsql-tab.png
+
+The load options are displayed below.
+
+.. image:: _static/shape-loader.png
+
+Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
+
+**Load Options**
+
+Database: select the database you wish to load the shape file to.
+
+Load Type: Create, Drop, Append, or Prepare
+
+Set SRID: Defaults to 0 if not set
+
+Database Username:  Select the user who will own the data
+
+Schema: Select an existing schema or create a new schema.
+
+Table: Select an existing table or create new one
+
+Shape File Source:  Local, Upload, or FTP/HTTP
+
+Load via Comamnd Line
 =====================
+ 
+Usage
 
-There are two ways to start/stop/restart Tomcat.
-
-1.  Via Module, using the Stop/Start/Restart buttons as shown below::
-
-   .. image:: _static/tomcat-functions.png
-
-2.  Via SSH, using the following commands
+shp2pgsql usage can be found using the 'shp2pgsl' command:
 
 .. code-block:: console
    :linenos:
 
-    /etc/init.d/tomcat { start | stop | restart | status }
-    
+   root@geohelm:~# shp2pgsql
+   RELEASE: 2.3.2 (r15302)
+   USAGE: shp2pgsql [<options>] <shapefile> [[<schema>.]<table>]
+   OPTIONS:
+      -s [<from>:]<srid> Set the SRID field. Defaults to 0.
+         Optionally reprojects from given SRID (cannot be used with -D).
+         (-d|a|c|p) These are mutually exclusive options:
+     -d  Drops the table, then recreates it and populates
+         it with current shape file data.
+     -a  Appends shape file into current table, must be
+         exactly the same table schema.
+     -c  Creates a new table and populates it, this is the
+         default if you do not specify any options.
+     -p  Prepare mode, only creates the table.
+     -g <geocolumn> Specify the name of the geometry/geography column
+      (mostly useful in append mode).
+  -D  Use postgresql dump format (defaults to SQL insert statements).
+  -e  Execute each statement individually, do not use a transaction.
+      Not compatible with -D.
+  -G  Use geography type (requires lon/lat data or -s to reproject).
+  -k  Keep postgresql identifiers case.
+  -i  Use int4 type for all integer dbf fields.
+  -I  Create a spatial index on the geocolumn.
+  -m <filename>  Specify a file containing a set of mappings of (long) column
+     names to 10 character DBF column names. The content of the file is one or
+     more lines of two names separated by white space and no trailing or
+     leading space. For example:
+         COLUMNNAME DBFFIELD1
+         AVERYLONGCOLUMNNAME DBFFIELD2
+  -S  Generate simple geometries instead of MULTI geometries.
+  -t <dimensionality> Force geometry to be one of '2D', '3DZ', '3DM', or '4D'
+  -w  Output WKT instead of WKB.  Note that this can result in
+      coordinate drift.
+  -W <encoding> Specify the character encoding of Shape's
+      attribute column. (default: "UTF-8")
+  -N <policy> NULL geometries handling policy (insert*,skip,abort).
+  -n  Only import DBF file.
+  -T <tablespace> Specify the tablespace for the new table.
+      Note that indexes will still use the default tablespace unless the
+      -X flag is also used.
+  -X <tablespace> Specify the tablespace for the table's indexes.
+      This applies to the primary key, and the spatial index if
+      the -I flag is used.
+  -?  Display this help screen.
 
-Init Script
-===========
+  An argument of `--' disables further option processing.
+  (useful for unusual file names starting with '-')
 
-The Tomcat init script is located in /etc/init.d and has the following content.
+Troubleshooting
+===============
 
-.. code-block:: bash
+If the above commands produce 'shp2pgsql command not found', do the following:
+
+On Ubuntu:
+
+.. code-block:: console
    :linenos:
 
+   root@geohelm:~# apt install postgis
 
+On CentOS
 
-	#!/bin/bash
-	### BEGIN INIT INFO
-	# Provides:        tomcat
-	# Required-Start:  $network
-	# Required-Stop:   $network
-	# Default-Start:   2 3 4 5
-	# Default-Stop:    0 1 6
-	# Short-Description: Start/Stop Tomcat server
-	### END INIT INFO
+.. code-block:: console
+   :linenos:
 
-	# Source function library.
-	. /etc/environment;	#Catalina variables
-	. $CATALINA_HOME/bin/setenv.sh
+   root@geohelm:~# yum install postgis3_utils
 
-	RETVAL=$?
+Documentation
+=============
 
-	function start(){
-	echo "Starting Tomcat"
-	/bin/su - tomcat $CATALINA_HOME/bin/startup.sh
-	RETVAL=$?
-	}
+Below are resources to get started with ogr2ogr and gdal_translate:
 
-	function stop(){
-	echo "Stopping Tomcat"
-	/bin/su - tomcat -c "$CATALINA_HOME/bin/shutdown.sh 60 -force"
-	RETVAL=$?
-	}
+* `Refractions Documentation`_
+* `Boston GIS Cheatsheet`_
 
-	case "$1" in
- 	start)
-		start;
-        ;;
- 	stop)
-		stop;
-        ;;
- 	restart)
-		echo "Restarting Tomcat"
-    	stop;
-		start;
-        ;;
- 	status)
-
-		if [ -f "${CATALINA_PID}" ]; then
-			TOMCAT_PID=$(cat "${CATALINA_PID}")
-			echo "Tomcat is running with PID ${TOMCAT_PID}";
-			RETVAL=1
-		else
-			echo "Tomcat is not running";
-			RETVAL=0
-		fi
-		;;
- 	*)
-        echo $"Usage: $0 {start|stop|restart|status}"
-        exit 1
-        ;;
-	esac
-	exit $RETVAL
+.. _`Refractions Documentation`: https://postgis.net/docs/using_postgis_dbmanagement.html#shp2pgsql_usage
+.. _`Boston GIS Cheatsheet`: http://www.bostongis.com/pgsql2shp_shp2pgsql_quickguide.bqg 
 
 
 
-
-Version
-=======
-
-GeoHelm has been tested with Tomcat 8.x and 9.x
 
