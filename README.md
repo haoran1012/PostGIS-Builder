@@ -1,20 +1,30 @@
 
 # PostGIS Webmin Module
 
-[![Documentation Status](https://readthedocs.org/projects/nagios-webmin-module/badge/?version=latest)](https://nagios-module.citedcorp.com/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/postgis-webmin-module/badge/?version=latest)](https://postgis-webmin-module.readthedocs.io/en/latest/?badge=latest)
 
 
 
 # Info
-PostGIS Module for Webmin.  Install and Manage Nagios Core and nrpe.
+PostGIS Module for Webmin.  Install and Manage PostGIS, along with PgRouting, shp2pgsql, osm2pgsql, and raster2pgsql.
+
+# Operating Systems
+Ubuntu 18
+Ububtu 20
+CentOS 8
+
+# Systems Requirements
+5 GB SSD
+1 GB RAM (Ubuntu)
+2 GB RAM (CentOS - required for osm2pgsql build)
 
 # Install via script:
 
-      wget https://raw.githubusercontent.com/acugis/Postgis-Webmin-Module/master/scripts/pre-install.sh
+      wget https://raw.githubusercontent.com/acugis/Postgis-Webmin-Module/master/scripts/postgis-install.sh
       chmod +x pre-install.sh
-      ./pre-install.sh
+      ./postgis-install.sh
 
-Go to Servers->PostGIS and complete the installtion Wizard.
+Go to Servers->PostGIS
 
 # Install from GIT
 Archive module
@@ -32,17 +42,17 @@ Go to Servers->Postgis and complete the installtion Wizard.
 # Notes
 
 ## **Ubuntu**
-Tested on Ubuntu 18
+Ubuntu 18 and 20 LTS
 
 ## **Readhat/Fedora/CentOS**
-Tested on CentOS 7x64
+CentOS 8
 
-## **Issues**
-Please report issue here
+## **CentOS Notes**
+CentOS requires 2 GB RAM for osm2pgsql build
 
 # Screen Shot
 
-Nagios Module:
+PostGIS Module:
 
 ![POstGIS](docs/_static/postgis.png)
 
