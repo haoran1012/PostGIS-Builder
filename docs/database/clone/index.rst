@@ -7,7 +7,7 @@
    :width: 1em
 
 ***************************
-Main Configuration Files
+Clone Database
 ***************************
 
 .. contents:: Table of Contents
