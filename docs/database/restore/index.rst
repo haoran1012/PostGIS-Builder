@@ -7,7 +7,7 @@
    :width: 1em
 
 ***************************
-Objects Configuration Files
+Restore Database
 ***************************
 
 .. contents:: Table of Contents
