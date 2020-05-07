@@ -7,7 +7,7 @@
    :width: 1em
 
 **********************
-PostGIS
+pg_featureserv
 **********************
 
 .. contents:: Table of Contents
