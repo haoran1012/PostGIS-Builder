@@ -62,7 +62,7 @@ raster2pgsql usage can be found using the 'raster2pgsql' command.
 .. code-block:: console
    :linenos:
 
-   [root@route ~]# raster2pgsql
+   [root@postgis ~]# raster2pgsql
    RELEASE: 3.0.1 GDAL_VERSION=30 (ec2a9aa)
    USAGE: raster2pgsql [<options>] <raster>[ <raster>[ ...]] [[<schema>.]<table>]
    Multiple rasters can also be specified using wildcards (*,?).
