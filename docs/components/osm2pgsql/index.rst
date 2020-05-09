@@ -36,27 +36,28 @@ Also select if load will be into a new Schema and, in the case of New Table crea
 
 **Load Options**
 
-Database: select the database you wish to load the shape file to.
+*Database*: select the database you wish to load the shape file to.
 
-Database Username 	
+*Database Username*: The postgres user who will load the file. 	
 
-Schema (or New schema name)
+*Schema*:  Select a schema from the drop-down or create a new schema.
 
-OSM source (.pbf).  The options are Local file, Uploaded file, or FTP or HTTP URL 	
+*OSM source (.pbf)*: The options are Local file, Uploaded file, or FTP or HTTP URL 	
 
-Load options:
+**Load options**:
 
-Store temporary data in the database 	( --slim )
+*Store temporary data in the database 	( --slim )*: Enable the slim option
 
-Add tags without column to an additional hstore (key/value) column 	( --hstore )
+*Add tags without column to an additional hstore (key/value) column 	( --hstore )*
 
-Coordinate format 	
+*Coordinate format*: Options are Mercator or Lat&Lon
 
-EPSG Projection 	
+*EPSG Projection*: Set ESPG projection (e.g. 4326) 	
 
-Memory for caching nodes 	
+*Memory for caching nodes*: Default options are 200 MB, 800 MB, 1000 MB, along with increments depending on available RAM. 	
 
-Number of parallel processes 
+*Number of parallel processes*: The drop-down will display the number available based on your hardware.
+
 
 Load via Comamnd Line
 =====================
