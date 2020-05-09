@@ -26,11 +26,11 @@ Load via Shape File Loader
 
 Click the Shape File Loader tab as shown below
 
-.. image:: _static/shp2pgsql-tab.png
+.. image:: _static/osm2pgsql-tab.png
 
 The load options are displayed below.
 
-.. image:: _static/shape-loader.png
+.. image:: _static/osm2pgsql-loader.png
 
 Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
 
