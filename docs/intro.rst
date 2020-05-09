@@ -4,11 +4,13 @@ Intro
 Overview
 ------------
 
-PostGIS Builder is a script and optional Webmin Module for building a complete PostGIS stack, along with PgRouting, shp2pgsql, osm2pgsql, raster2pgsql, pg_tileserv, and pg_featureserv.
+PostGIS Builder is a script and optional Webmin Module for building a complete PostGIS stack.
 
-It also includes demo applications using Leaflet, GeoJson, NodeJS, GeoDjango, pg_tileserv.
+PostGIS Builder installs and configures the latest stable versions of PostgreSQL, PostGIS, PgRouting, shp2pgsql, osm2pgsql, raster2pgsql, pg_tileserv, and pg_featureserv.
 
-PostGIS Builder installs and configures the latest stable versions of PostgreSQL, PostGIS, and provides a UI for loading data.
+It also includes demo web applications using Leaflet, GeoJson, NodeJS, GeoDjango, pg_tileserv.
+
+The optional Webmin Module allows you to manage all aspects via Webmin.
 
 It can be installed on CentOS 8, Ubuntu 18, or Ubuntu 20.
 
