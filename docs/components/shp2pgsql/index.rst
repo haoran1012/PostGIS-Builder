@@ -57,7 +57,7 @@ Load via Comamnd Line
  
 Usage
 
-shp2pgsql usage can be found using the 'shp2pgsl' command:
+shp2pgsql usage can be found using the 'shp2pgsl' command.
 
 .. code-block:: console
    :linenos:
