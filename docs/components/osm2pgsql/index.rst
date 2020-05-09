@@ -14,7 +14,7 @@ osm2pgsql
 OSM Loader Tool
 =================
 
-GeoHelm includes a shp2pgsql tool that can used to load shape files into PostGIS via Webmin.
+There are two ways to load OSM file into PostGIS.
 
 1. Load using the Shape File Loader.
 
@@ -38,17 +38,25 @@ Also select if load will be into a new Schema and, in the case of New Table crea
 
 Database: select the database you wish to load the shape file to.
 
-Load Type: Create, Drop, Append, or Prepare
+Database Username 	
 
-Set SRID: Defaults to 0 if not set
+Schema (or New schema name)
 
-Database Username:  Select the user who will own the data
+OSM source (.pbf).  The options are Local file, Uploaded file, or FTP or HTTP URL 	
 
-Schema: Select an existing schema or create a new schema.
+Load options:
 
-Table: Select an existing table or create new one
+Store temporary data in the database 	( --slim )
 
-Shape File Source:  Local, Upload, or FTP/HTTP
+Add tags without column to an additional hstore (key/value) column 	( --hstore )
+
+Coordinate format 	
+
+EPSG Projection 	
+
+Memory for caching nodes 	
+
+Number of parallel processes 
 
 Load via Comamnd Line
 =====================
@@ -60,9 +68,9 @@ shp2pgsql usage can be found using the 'shp2pgsl' command:
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# shp2pgsql
+   root@postgis:~# osm2pgsql
    RELEASE: 2.3.2 (r15302)
-   USAGE: shp2pgsql [<options>] <shapefile> [[<schema>.]<table>]
+   USAGE: osm2pgsql [<options>] <shapefile> [[<schema>.]<table>]
    OPTIONS:
       -s [<from>:]<srid> Set the SRID field. Defaults to 0.
          Optionally reprojects from given SRID (cannot be used with -D).
@@ -107,25 +115,6 @@ shp2pgsql usage can be found using the 'shp2pgsl' command:
 
   An argument of `--' disables further option processing.
   (useful for unusual file names starting with '-')
-
-Troubleshooting
-===============
-
-If the above commands produce 'shp2pgsql command not found', do the following:
-
-On Ubuntu:
-
-.. code-block:: console
-   :linenos:
-
-   root@geohelm:~# apt install postgis
-
-On CentOS
-
-.. code-block:: console
-   :linenos:
-
-   root@geohelm:~# yum install postgis3_utils
 
 Documentation
 =============
