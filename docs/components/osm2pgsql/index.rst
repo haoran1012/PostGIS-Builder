@@ -16,7 +16,7 @@ OSM Loader Tool
 
 There are two ways to load OSM file into PostGIS.
 
-1. Load using the Shape File Loader.
+1. Load using the OSM Loader in Webmin.
 
 2. Load using command line.
 
@@ -63,12 +63,22 @@ Load via Comamnd Line
  
 Usage
 
-shp2pgsql usage can be found using the 'shp2pgsl' command:
+To load the same PBF we loaded above via osm2pgsql command line, we could use below:
 
 .. code-block:: console
    :linenos:
 
-   [root@route ~]# osm2pgsql --help
+   [root@postgis ~]# osm2pgsql --slim --hstore -C 200 --username postgres --database demodb /opt/rhode-island-latest.osm.pbf
+   
+
+The full usage commands are show in the help section below.
+
+osm2pgsql usage can be found using the 'osm2pgsl --help' command:
+
+.. code-block:: console
+   :linenos:
+
+   [root@postgis ~]# osm2pgsql --help
    osm2pgsql: /usr/pgsql-12/lib/libpq.so.5: no version information available (required by osm2pgsql)
    osm2pgsql version 1.2.0
 
