@@ -30,7 +30,7 @@ Click the Shape File Loader tab as shown below
 
 The load options are displayed below.
 
-.. image:: _static/osm2pgsql-loader.png
+.. image:: _static/osm2pgsql-panel.png
 
 Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
 
