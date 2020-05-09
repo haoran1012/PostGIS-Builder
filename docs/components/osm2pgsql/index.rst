@@ -32,7 +32,7 @@ The load options are displayed below.
 
 .. image:: _static/osm2pgsql-panel.png
 
-In our example, we will be loading the PBF for Rhode Island available from GeoFabrik (https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf).  
+.. Note:: In our example, we will be loading the PBF for Rhode Island available from GeoFabrik (https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf).  
 
 
 **General Options**
