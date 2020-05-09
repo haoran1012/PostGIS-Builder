@@ -68,53 +68,65 @@ shp2pgsql usage can be found using the 'shp2pgsl' command:
 .. code-block:: console
    :linenos:
 
-   root@postgis:~# osm2pgsql
-   RELEASE: 2.3.2 (r15302)
-   USAGE: osm2pgsql [<options>] <shapefile> [[<schema>.]<table>]
-   OPTIONS:
-      -s [<from>:]<srid> Set the SRID field. Defaults to 0.
-         Optionally reprojects from given SRID (cannot be used with -D).
-         (-d|a|c|p) These are mutually exclusive options:
-     -d  Drops the table, then recreates it and populates
-         it with current shape file data.
-     -a  Appends shape file into current table, must be
-         exactly the same table schema.
-     -c  Creates a new table and populates it, this is the
-         default if you do not specify any options.
-     -p  Prepare mode, only creates the table.
-     -g <geocolumn> Specify the name of the geometry/geography column
-      (mostly useful in append mode).
-  -D  Use postgresql dump format (defaults to SQL insert statements).
-  -e  Execute each statement individually, do not use a transaction.
-      Not compatible with -D.
-  -G  Use geography type (requires lon/lat data or -s to reproject).
-  -k  Keep postgresql identifiers case.
-  -i  Use int4 type for all integer dbf fields.
-  -I  Create a spatial index on the geocolumn.
-  -m <filename>  Specify a file containing a set of mappings of (long) column
-     names to 10 character DBF column names. The content of the file is one or
-     more lines of two names separated by white space and no trailing or
-     leading space. For example:
-         COLUMNNAME DBFFIELD1
-         AVERYLONGCOLUMNNAME DBFFIELD2
-  -S  Generate simple geometries instead of MULTI geometries.
-  -t <dimensionality> Force geometry to be one of '2D', '3DZ', '3DM', or '4D'
-  -w  Output WKT instead of WKB.  Note that this can result in
-      coordinate drift.
-  -W <encoding> Specify the character encoding of Shape's
-      attribute column. (default: "UTF-8")
-  -N <policy> NULL geometries handling policy (insert*,skip,abort).
-  -n  Only import DBF file.
-  -T <tablespace> Specify the tablespace for the new table.
-      Note that indexes will still use the default tablespace unless the
-      -X flag is also used.
-  -X <tablespace> Specify the tablespace for the table's indexes.
-      This applies to the primary key, and the spatial index if
-      the -I flag is used.
-  -?  Display this help screen.
+   [root@route ~]# osm2pgsql --help
+   osm2pgsql: /usr/pgsql-12/lib/libpq.so.5: no version information available (required by osm2pgsql)
+   osm2pgsql version 1.2.0
 
-  An argument of `--' disables further option processing.
-  (useful for unusual file names starting with '-')
+   Usage:
+        osm2pgsql [options] planet.osm
+        osm2pgsql [options] planet.osm.{pbf,gz,bz2}
+        osm2pgsql [options] file1.osm file2.osm file3.osm
+
+   This will import the data from the OSM file(s) into a PostgreSQL database
+   suitable for use by the Mapnik renderer.
+
+    Common options:
+       -a|--append      Add the OSM file into the database without removing
+                        existing data.
+       -c|--create      Remove existing data from the database. This is the
+                        default if --append is not specified.
+       -l|--latlong     Store data in degrees of latitude & longitude.
+       -m|--merc        Store data in proper spherical mercator (default).
+       -E|--proj num    Use projection EPSG:num.
+       -s|--slim        Store temporary data in the database. This greatly
+                        reduces the RAM usage but is much slower. This switch is
+                        required if you want to update with --append later.
+       -S|--style       Location of the style file. Defaults to
+                        /usr/share/osm2pgsql/default.style.
+       -C|--cache       Use up to this many MB for caching nodes (default: 800)
+       -F|--flat-nodes  Specifies the flat file to use to persistently store node
+                        information in slim mode instead of in PostgreSQL.
+                        This file is a single > 40Gb large file. Only recommended
+                        for full planet imports. Default is disabled.
+
+    Database options:
+       -d|--database    The name of the PostgreSQL database to connect to.
+       -U|--username    PostgreSQL user name (specify passsword in PGPASSWORD
+                        environment variable or use -W).
+       -W|--password    Force password prompt.
+       -H|--host        Database server host name or socket location.
+       -P|--port        Database server port.
+
+   A typical command to import a full planet is
+    osm2pgsql -c -d gis --slim -C <cache size> -k \
+      --flat-nodes <flat nodes> planet-latest.osm.pbf
+   where
+    <cache size> should be equivalent to the size of the
+      pbf file to be imported if there is enough RAM
+      or about 75% of memory in MB on machines with less
+    <flat nodes> is a location where a 50+GB file can be saved.
+
+   A typical command to update a database imported with the above command is
+    osmosis --rri workingDirectory=<osmosis dir> --simc --wxc - \
+      | osm2pgsql -a -d gis --slim -k --flat-nodes <flat nodes> -r xml -
+   where
+    <flat nodes> is the same location as above.
+    <osmosis dir> is the location osmosis replication was initialized to.
+
+   Run osm2pgsql --help --verbose (-h -v) for a full list of options.
+
+
+
 
 Documentation
 =============
