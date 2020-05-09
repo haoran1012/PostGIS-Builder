@@ -34,7 +34,7 @@ The load options are displayed below.
 
 Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
 
-**Load Options**
+**General Options**
 
 *Database*: select the database you wish to load the shape file to.
 
