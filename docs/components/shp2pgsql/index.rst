@@ -14,7 +14,9 @@ shp2pgsql
 Shape Loader Tool
 =================
 
-GeoHelm includes a shp2pgsql tool that can used to load shape files into PostGIS via Webmin.
+An included shp2pgsql tool is available if you installed Webmin.
+
+There are 2 options for loading ESRI Shape files:
 
 1. Load using the Shape File Loader.
 
@@ -60,7 +62,7 @@ shp2pgsql usage can be found using the 'shp2pgsl' command:
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# shp2pgsql
+   root@postgis:~# shp2pgsql
    RELEASE: 2.3.2 (r15302)
    USAGE: shp2pgsql [<options>] <shapefile> [[<schema>.]<table>]
    OPTIONS:
@@ -118,14 +120,14 @@ On Ubuntu:
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# apt install postgis
+   root@postgis:~# apt install postgis
 
 On CentOS
 
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# yum install postgis3_utils
+   root@postgis:~# yum install postgis3_utils
 
 Documentation
 =============
