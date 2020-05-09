@@ -8,7 +8,7 @@ If (and only if) if you have elected to install the PostGIS Builder components v
 
 Go to Servers > PostGIS:
 
-.. image:: _static/3.png
+.. image:: _static/servers-postgis.png
 
 The main Wizard screen will a link for completing each step.
 
