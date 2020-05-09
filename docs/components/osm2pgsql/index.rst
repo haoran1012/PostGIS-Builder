@@ -21,10 +21,10 @@ There are two ways to load OSM file into PostGIS.
 2. Load using command line.
 
 
-Load via Shape File Loader
+Load via OSM File Loader
 ==========================
 
-Click the Shape File Loader tab as shown below
+Click the osm2pgsql tab as shown below
 
 .. image:: _static/osm2pgsql-tab.png
 
@@ -32,7 +32,8 @@ The load options are displayed below.
 
 .. image:: _static/osm2pgsql-panel.png
 
-Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
+In our example, we will be loading the PBF for Rhode Island available from GeoFabrik (https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf).  
+
 
 **General Options**
 
