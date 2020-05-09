@@ -116,7 +116,7 @@ To install using the Extension installer, click on the Extensions tab as shown b
  
 3. Once PostGIS has been installed on a target database, you can then return to install PgRouting:
 
-.. image:: _static/postgis-install-more.png 	
+.. image:: _static/postgis-install-others.png	
 	
 .. Note:: 
    You can also un-install Extensions using above. 
