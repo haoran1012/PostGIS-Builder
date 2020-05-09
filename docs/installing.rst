@@ -18,7 +18,7 @@ On a fresh CentOS 8, Ubuntu 18, or Ubuntu 20 installation, the fastest method is
     
 The above will install all of the components.
 
-If you do not wish to install Webmin and the PostGIS Webmin Module, comment out the lines below.
+If you do not wish to install Webmin and the PostGIS Webmin Module, comment out the lines below as shown.
 
 .. code-block:: console
    :linenos:
@@ -34,8 +34,11 @@ The passwords are also stored in the file /root/auth.txt following set up
 .. code-block:: console
    :linenos:
 
-   ~
-   PostGIS Builder is now installed. 
+   Installation is now completed.
+   Access pg-tileserv at 12.34.56.78:7800
+   Access pg-featureserv at 12.34.56.78:9000
+   Access pg-routing at 12.34.56.78/openlayers-pgrouting.html
+   postgres and crunchy pg passwords are saved in /root/auth.txt file
 
 
 Via Git or Download
