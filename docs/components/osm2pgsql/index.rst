@@ -32,10 +32,10 @@ The load options are displayed below.
 
 .. image:: _static/osm2pgsql-panel.png
 
-.. Note:: In our example, we will be loading the PBF for Rhode Island available from GeoFabrik (https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf).  
+.. Note:: In our examples, we will be loading the PBF for Rhode Island available from GeoFabrik (https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf).  
 
 
-**General Options**
+**1.  General Options**
 
 *Database*: select the database you wish to load the shape file to.
 
@@ -45,7 +45,7 @@ The load options are displayed below.
 
 *OSM source (.pbf)*: The options are Local file, Uploaded file, or FTP or HTTP URL 	
 
-**Load options**:
+**2.  Load options**:
 
 *Store temporary data in the database 	( --slim )*: Enable the slim option
 
@@ -145,11 +145,11 @@ Documentation
 
 Below are resources to get started with ogr2ogr and gdal_translate:
 
-* `Refractions Documentation`_
-* `Boston GIS Cheatsheet`_
+* `OSM OSM2PGSQL Wiki`_
+* `Learn OSM Website: OSM2PGSQL`_
 
-.. _`Refractions Documentation`: https://postgis.net/docs/using_postgis_dbmanagement.html#shp2pgsql_usage
-.. _`Boston GIS Cheatsheet`: http://www.bostongis.com/pgsql2shp_shp2pgsql_quickguide.bqg 
+.. _`OSM OSM2PGSQL Wiki`: https://wiki.openstreetmap.org/wiki/Osm2pgsql
+.. _`Learn OSM Website: OSM2PGSQL`: https://learnosm.org/en/osm-data/osm2pgsql/ 
 
 
 
