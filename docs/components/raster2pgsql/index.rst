@@ -11,26 +11,28 @@ raster2pgsql
 **********************
 
 .. contents:: Table of Contents
-Shape Loader Tool
-=================
+raster2pgsql Loader
+====================
 
-GeoHelm includes a shp2pgsql tool that can used to load shape files into PostGIS via Webmin.
+An included raster2pgsql tool is available if you installed Webmin.
 
-1. Load using the Shape File Loader.
+There are 2 options for loading raster files:
 
-2. Load using command line.
+1. Load using the raster2pgsql File Loader.
+
+2. Load using raster2pgsql via command line.
 
 
-Load via Shape File Loader
-==========================
+Load via raster2pgsql Loader
+============================
 
 Click the Shape File Loader tab as shown below
 
-.. image:: _static/shp2pgsql-tab.png
+.. image:: _static/raster2pgsql-tab.png
 
 The load options are displayed below.
 
-.. image:: _static/shape-loader.png
+.. image:: _static/raster2pgsql-panel.png
 
 Also select if load will be into a new Schema and, in the case of New Table creation, the table name to be created.
 
@@ -55,12 +57,12 @@ Load via Comamnd Line
  
 Usage
 
-shp2pgsql usage can be found using the 'shp2pgsl' command:
+shp2pgsql usage can be found using the 'shp2pgsl' command.
 
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# shp2pgsql
+   root@postgis:~# shp2pgsql
    RELEASE: 2.3.2 (r15302)
    USAGE: shp2pgsql [<options>] <shapefile> [[<schema>.]<table>]
    OPTIONS:
@@ -118,14 +120,14 @@ On Ubuntu:
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# apt install postgis
+   root@postgis:~# apt install postgis
 
 On CentOS
 
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# yum install postgis3_utils
+   root@postgis:~# yum install postgis3_utils
 
 Documentation
 =============
