@@ -30,8 +30,8 @@ To install via command line:
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# su - postgres
-   postgres@geohelm:~$ psql
+   root@postgis:~# su - postgres
+   postgres@postgis:~$ psql
    psql (12.2 (Ubuntu 12.2-2.pgdg18.04+1))
    Type "help" for help.
 
@@ -44,7 +44,7 @@ To install via command line:
 .. code-block:: console
    :linenos:
 
-   postgres=# create database geohelm;
+   postgres=# create database demodb;
    CREATE DATABASE
    postgres=# 
 
@@ -53,9 +53,9 @@ To install via command line:
 .. code-block:: console
    :linenos:
 
-   postgres=# \c geohelm
-   You are now connected to database "geohelm" as user "postgres".
-   geohelm=#
+   postgres=# \c demodb
+   You are now connected to database "gedemodbohelm" as user "postgres".
+   demodb=#
 
 4. Install the PostGIS extension.
 
@@ -64,18 +64,18 @@ To install via command line:
 
    geohelm=# create extension postgis;
    CREATE EXTENSION
-   geohelm=#
+   demodb=#
    
 5.  Install the PgRouting extension.
 
 .. code-block:: console
    :linenos:
 
-   geohelm=# create extension pgrouting;
+   demodb=# create extension pgrouting;
    CREATE EXTENSION
-   geohelm=#
+   demodb=#
 
-Note: GeoHelm also includes fuzzy_match_string, tiger, postgis_topology.
+Note: raster, fuzzy_match_string, tiger, postgis_topology are also available.
 
  
 5. Verify the installation via command line or the PostgreSQL Management Page
@@ -83,7 +83,7 @@ Note: GeoHelm also includes fuzzy_match_string, tiger, postgis_topology.
 .. code-block:: console
    :linenos:
 
-   geohelm=# \d
+   demodb=# \d
                List of relations
    Schema |       Name        | Type  |  Owner
    --------+-------------------+-------+----------
