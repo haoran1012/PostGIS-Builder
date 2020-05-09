@@ -4,13 +4,13 @@ Intro
 Overview
 ------------
 
-GeoHelm is a Webmin Module that allows you to build a full Open Source GIS stack quickly and easily.
+PostGIS Builder is a script and optional Webmin Module for building a complete PostGIS stack, along with PgRouting, shp2pgsql, osm2pgsql, raster2pgsql, pg_tileserv, and pg_featureserv.
 
-GeoHelm installs and configures PostgreSQL, PostGIS, GeoServer (optionally), Tomcat, and JDK.
+It also includes demo applications using Leaflet, GeoJson, NodeJS, GeoDjango, pg_tileserv.
 
-It includes a panel for managing all aspects of the service.
+PostGIS Builder installs and configures the latest stable versions of PostgreSQL, PostGIS, and provides a UI for loading data.
 
-GeoHelm can be installed on CentOS 7 or Ubuntu 18.
+It can be installed on CentOS 8, Ubuntu 18, or Ubuntu 20.
 
 All installed components are non-forked and un-modified and installed via the projects archive.
 
@@ -19,10 +19,11 @@ All installed components are non-forked and un-modified and installed via the pr
 
 System Requirements
 -------------------
-* CentOS 7 or 
+* CentOS 8 
 * Ubuntu 18
-* Webmin
-* 1 GB Ram
+* Ubuntu 20
+* 1 GB Ram (Ubuntu)
+* 2 GB Ram (CentOS)
 * 10 GB SSD
 
 Authors
@@ -46,24 +47,31 @@ Components
 
 .. _`PostGIS`: https://community.jaspersoft.com/project/jasperreports-library 
 
-`Apache Tomcat`_
+`PgRouting`_
 
-.. _`Apache Tomcat`: http://tomcat.apache.org/ 
+.. _`PgRouting`: https://pgrouting.org// 
 
-`OpenJDK`_
+`osm2pgsql`_
 
-.. _`OpenJDK`: https://openjdk.java.net/
+.. _`osm2pgsql`: https://github.com/openstreetmap/osm2pgsql/blob/master/docs/usage.md/
 
-`GeoServer`_
+`raster2pgsql`_
 
-.. _`GeoServer`: https://openjdk.java.net/
+.. _`raster2pgsql`: http://postgis.refractions.net/docs/using_raster.xml.html/
+
+`pg_tileserv`_
+
+.. _`pg_tileserv`: https://github.com/CrunchyData/pg_tileserv
+
+`pg_featureserv`_
+
+.. _`pg_featureserv`: https://github.com/CrunchyData/pg_featureserv
  
-
 
 Open Source
 -----------
 
-GeoHelm is Free, Open Source Software.
+Free, Open Source Software.
 
 GNU GENERAL PUBLIC LICENSE v3
 
