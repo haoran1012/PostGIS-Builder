@@ -12,101 +12,110 @@ pg_featureserv
 
 .. contents:: Table of Contents
 
-Installing PostGIS
+pg_featureserv
 ==================
 
-PostGIS can be enabled on your PostgreSQL database via the Extension tab or via Command Line.
+pg_featureserv is installed as a systemd service during installation.
+
+The service can be started and stopped via command line or Webmin.
+
+The service file contents are show below.
+
+.. code-block:: console
+   :linenos:
+
+	[Unit]
+	Description=PG FeatureServ
+	After=multi-user.target
+
+	[Service]
+	User=pgis
+	WorkingDirectory=/opt/pg_featureserv
+	Type=simple
+	Restart=always
+	ExecStart=/opt/pg_featureserv/pg_featureserv --config /opt/pg_featureserv/config/pg_featureserv.toml
+
+	[Install]
+	WantedBy=multi-user.target
+
+
+The file is installed at::
+
+	/etc/systemd/system/pg_featureserv.service
+
 
 Command Line
 ============
 
-To install via command line:
-
-1. Connect to PostgreSQL
+Service commands:
 
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# su - postgres
-   postgres@geohelm:~$ psql
-   psql (12.2 (Ubuntu 12.2-2.pgdg18.04+1))
-   Type "help" for help.
+   root@postgis:~# service pg_featureserv stop | start 
+   
+   
+Webmin
+============
 
-   postgres=#
+To start and stop the pg_tileserv service, click the button as below.
+
+.. image:: _static/pgfeatureserv.png
+
+
+Database
+=========
+
+On installation, a database is created called postgisftw.  
+
+This database contains the demo data.
+
+A user pgis is also created and given permission to the database.  
+
+The password for pgis is displayed at the end of installation as well as saved to /root/auth.txt
 
  
+Structure
+==========
 
-2. If you have not created a database, create one now.
+pg_tileserv is installed by default at::
 
-.. code-block:: console
-   :linenos:
+	/opt/pgfeatureserv
 
-   postgres=# create database geohelm;
-   CREATE DATABASE
-   postgres=# 
-
-3. Connect to your database.
-
-.. code-block:: console
-   :linenos:
-
-   postgres=# \c geohelm
-   You are now connected to database "geohelm" as user "postgres".
-   geohelm=#
-
-4. Install the PostGIS extension.
-
-.. code-block:: console
-   :linenos:
-
-   geohelm=# create extension postgis;
-   CREATE EXTENSION
-   geohelm=#
-
-Note: GeoHelm also includes fuzzy_match_string, tiger, postgis_topology.
-
- 
-5. Verify the installation via command line or the PostgreSQL Management Page
-
-.. code-block:: console
-   :linenos:
-
-   geohelm=# \d
-               List of relations
-   Schema |       Name        | Type  |  Owner
-   --------+-------------------+-------+----------
-   public | geography_columns | view  | postgres
-   public | geometry_columns  | view  | postgres
-   public | raster_columns    | view  | postgres
-   public | raster_overviews  | view  | postgres
-   public | spatial_ref_sys   | table | postgres
-   (5 rows)
-
- 
-Extensions Tool
-===============
-
-To install using the PostGIS/PgRouting Extension installer, click on the Extensions tab as shown below.
-
-.. image:: _static/postgis-tab.png
-
-1. Select the target database from the drop-down as shown below.
-
-.. image:: _static/postgis-select-db.png 
-
-.. Note:: You must FIRST install PostGIS prior to installing any other of the listed extensions.
-
-
-2. Tick the PostGIS select button and then click the Save button as show below:
-
-.. image:: _static/postgis-enable.png 	
-
- 
-3. Once PostGIS has been installed on a target database, you can then return to install additional extensions:
-
-.. image:: _static/postgis-install-more.png 	
+The directory structure is show below::
 	
-.. Note:: 
-   You can also un-install Extensions using above. 
+	/opt/pg_featureserv
+	├── LICENSE.md
+	├── README.md
+	├── assets
+	│   ├── api.gohtml
+	│   ├── collection.gohtml
+	│   ├── collections.gohtml
+	│   ├── conformance.gohtml
+	│   ├── fun_script.gohtml
+	│   ├── function.gohtml
+	│   ├── functions.gohtml
+	│   ├── home.gohtml
+	│   ├── item.gohtml
+	│   ├── items.gohtml
+	│   ├── map_script.gohtml
+	│   └── page.gohtml
+	├── config
+	│   ├── pg_featureserv.toml
+	│   └── pg_featureserv.toml.example.save
+	└── pg_featureserv
+
+
+
+Configuration File
+==================
+
+On installation, the pg_featureserv.toml configuration file is updated to include the postgisftw connection inforation::
+
+	DbConnection = "postgresql://pgis:G84iwLdL9jeyA7IiwkTmWhyHwKR41Qxz@localhost/postgisftw"
+	
+
+https://github.com/CrunchyData/pg_featureserv
+ 
 
 
