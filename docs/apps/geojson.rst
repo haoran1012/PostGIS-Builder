@@ -25,7 +25,7 @@ It can be access via the Leaflet tab on the home page:
 
 It can also be access directly via url at::
 
-   http://domain.com/LeafletJSDemo.html.html
+   http://domain.com/LeafletJSDemo.html
    
    
 
@@ -36,11 +36,11 @@ Once accessed using above, the app will appear as shown below:
 
 .. image:: _static/leaflet-app1.png
 
-Click anywhere to select a start location, then click elswhere for an end location.
+Click on the US layer to view the getFeature info for the State.
 
-The route will be displayed as below:
+The data will be displayed as below:
 
-.. image:: _static/leaflet-app2.png
+.. image:: _static/leaflet-app.png
    
 
 Structure
@@ -48,26 +48,74 @@ Structure
 
 The app is located at::
 
-	/vaw/www/html/pgrouting-openlayers.html
+	/vaw/www/html/LeafletJSDemo.html
+		
+On installation, data from PostgreSQL is exported to GeoJson format and saved to::
+
+	/var/www/html/states.json
 	
-On installation, the pg_tileserv and pg_featureserv urls are set in the html document::
 
-	...
-	var vectorUrl = "http://206.189.186.146:7800/public.ways/{z}/{x}/{y}.pbf";
-	...
-    	var url = "http://206.189.186.146:9000/functions/boston_find_route/items.json";
-	...
+Content
+=========
 
+The content of the html page is displayed below.
+
+.. code-block:: console
+   :linenos:
+
+	<!doctype html>
+	<html>
+	<head>
+  	<style type="text/css">
+    	body {
+      	padding: 0;
+      	margin: 0;
+    	}
+
+    	html, body, #map {
+      	height: 100%;
+    	}
+
+  	</style>
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css"
+   	integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw=="
+   	crossorigin=""/>
+
+    	<script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
+   	integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
+   	crossorigin=""></script>
+  	</head> 
+  
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	</head>
+	<body>
+  	<div id="map"></div>
+  	<script>
+	var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  	var osmAttrib='Data &copy <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+  	var osm = new L.TileLayer(osmUrl, {minZoom: 2, maxZoom: 8, attribution: osmAttrib});
+    
+    	$.getJSON("states.geojson", function(data) {
+	function onEachFeature(feature, layer) {
+        layer.bindPopup("Name: " + feature.properties.STATE_NAME + "<br>" + "Abbreviation: " + feature.properties.STATE_ABBR);
+  	}   
+	var geojson = L.geoJson(data, {
+      	onEachFeature: onEachFeature
+    	});
+	
+    	var map = L.map('map').fitBounds(geojson.getBounds());
+    	osm.addTo(map);
+    	geojson.addTo(map);
+  	});
+	  </script>
+	</body>
+	</html>
 
 
 Documentation
 ==============
-https://openlayers.org
+https://leafletjs.com/
 
-https://pgrouting.org/
-
-https://github.com/crunchydata/pg_tileserv
-
-https://github.com/crunchydata/pg_featureserv<br>
-
+https://leafletjs.com/examples/geojson/
    
