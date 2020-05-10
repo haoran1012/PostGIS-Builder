@@ -60,7 +60,7 @@ Webmin
 
 To start and stop the pg_tileserv service, click the button as below.
 
-.. image:: _static/pgfeatureserv.png
+.. image:: _static/pgfeaturserv.png
 
 
 Database
