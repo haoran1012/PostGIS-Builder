@@ -45,20 +45,6 @@ The route will be displayed as below:
 .. image:: _static/pgtile-app.png
    
 
-Django Admin
-==============
-
-The Django Admin Panel is located at::
-
-   	http://domain.com:8000/admin
-   
-If accessing via IP, substitute the IP for 'domain.com' above.
-   
-The Django admin password is saved on disk at::
-
-	/root/auth.txt
-   
-
 Structure
 =============
 
