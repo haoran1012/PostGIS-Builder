@@ -12,89 +12,70 @@ pg_tileserv
 
 .. contents:: Table of Contents
 
-Installing PostGIS
+pg_tileserv
 ==================
 
-PostGIS can be enabled on your PostgreSQL database via the Extension tab or via Command Line.
+pg_tileserv is installed as a systemd service during installation.
+
+The service can be started and stopped via command line or Webmin.
 
 Command Line
 ============
 
-To install via command line:
-
-1. Connect to PostgreSQL
+Service commands:
 
 .. code-block:: console
    :linenos:
 
-   root@geohelm:~# su - postgres
-   postgres@geohelm:~$ psql
-   psql (12.2 (Ubuntu 12.2-2.pgdg18.04+1))
-   Type "help" for help.
+   root@postgis:~# service pg_tileser stop | start 
+   
+   
+Webmin
+============
 
-   postgres=#
+To start and stop the pg_tileserv service, click the button as below.
+
+.. image:: _static/pgtileserv.png
+
+
+Database
+=========
+
+On installation, a database is created called postgisftw.  
+
+This database contains the demo data.
+
+A user pgis is also created and given permission to the database.  The password for pgis is displayed at the end of installation as well as saved to /root/auth.txt
 
  
+Structure
+=========
 
-2. If you have not created a database, create one now.
+pg_tileserv is installed by default at::
 
-.. code-block:: console
-   :linenos:
+	/opt/pgtileserv
 
-   postgres=# create database geohelm;
-   CREATE DATABASE
-   postgres=# 
+The directory structure is show below::
+	
+	/opt/pg_tileserv
+	├── LICENSE.md
+	├── README.md
+	├── assets
+	    ├── index.html
+	    ├── preview-function.html
+	    └── preview-table.html
+	├── config
+	    ├── pg_tileserv.toml
+	    └── pg_tileserv.toml.example.save
+	└── pg_tileserv
 
-3. Connect to your database.
 
-.. code-block:: console
-   :linenos:
+Configuration File
+==================
 
-   postgres=# \c geohelm
-   You are now connected to database "geohelm" as user "postgres".
-   geohelm=#
+On installation, the pg_tileserv.toml configuration file is updated to include the postgisftw connection inforation::
 
-4. Install the PostGIS extension.
-
-.. code-block:: console
-   :linenos:
-
-   geohelm=# create extension postgis;
-   CREATE EXTENSION
-   geohelm=#
-
-Note: GeoHelm also includes fuzzy_match_string, tiger, postgis_topology.
-
- 
-5. Verify the installation via command line or the PostgreSQL Management Page
-
-.. code-block:: console
-   :linenos:
-
-   geohelm=# \d
-               List of relations
-   Schema |       Name        | Type  |  Owner
-   --------+-------------------+-------+----------
-   public | geography_columns | view  | postgres
-   public | geometry_columns  | view  | postgres
-   public | raster_columns    | view  | postgres
-   public | raster_overviews  | view  | postgres
-   public | spatial_ref_sys   | table | postgres
-   (5 rows)
-
- 
-Extensions Tool
-===============
-
-To install using the PostGIS/PgRouting Extension installer, click on the Extensions tab as shown below.
-
-.. image:: _static/postgis-tab.png
-
-1. Select the target database from the drop-down as shown below.
-
-.. image:: _static/postgis-select-db.png 
-
-.. Note:: You must FIRST install PostGIS prior to installing any other of the listed extensions.
+	DbConnection = "postgresql://pgis:G84iwLdL9jeyA7IiwkTmWhyHwKR41Qxz@localhost/postgisftw"
 
 
 2. Tick the PostGIS select button and then click the Save button as show below:
