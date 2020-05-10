@@ -25,7 +25,7 @@ It can be access via the GeoDjango tab on the home page:
 
 It can also be access directly via url at::
 
-   http://domain.com:4000
+   http://domain.com:8000/states/
    
    
 
@@ -221,54 +221,16 @@ It has the following structure:
 
 
 
-File Locations
+Django Admin
 ==============
 
-On CentOS, the PostgreSQL config direcotry is located at::
+The Django Admin Panel is located at::
 
-   /var/lib/pgsql/12/data
+   	http://domain.com:8000/admin
    
-On Ubuntu, the PostgreSQL direcotry is located at::
+If accessing via IP, substitute the IP for 'domain.com' above.
    
-   /etc/postgresql/12/main
+The Django admin password is saved on disk at::
+
+	/root/auth.txt
    
-The postgresql.conf File
-========================
-
-On installation via the Wizard, PostgreSQL is configured to accept connections on all interfaces as well as SSL connections.
-
-.. code-block:: bash
-   :linenos:
-
-	#------------------------------------------------------------------------------
-	# CONNECTIONS AND AUTHENTICATION
-	#------------------------------------------------------------------------------
-
-	# - Connection Settings -
-	
-	listen_addresses = '*'
-	)
-	
-	
-	# - SSL -
-
-	ssl = on
-   
-Above are excepts.
-
-Version
-=======
-
-GeoHelm has been tested with PostgreSQL 10, 11 and 12.
-
-Webmin PostgreSQL Module
-========================
-
-On installation, the native PostgreSQL Database Server module is also activated.
-
-It is located under Servers > PostgreSQL Database Server
-
-.. image:: _static/webmin-postgresql.png
-
-
-
