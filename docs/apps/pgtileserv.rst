@@ -62,25 +62,25 @@ The Django admin password is saved on disk at::
 Structure
 =============
 
-The app is located at:
+The app is located at::
 
 	/vaw/www/html/pgrouting-openlayers.html
-	/var/www/html/states.json
+	
+On installation, the pg_tileserv and pg_featureserv urls are set in the html document::
 
-On installation, the pg_tileserv and pg_featureserv urls are set in the html document.
-
+	...
 	var vectorUrl = "http://206.189.186.146:7800/public.ways/{z}/{x}/{y}.pbf";
-
+	...
     	var url = "http://206.189.186.146:9000/functions/boston_find_route/items.json";
-
+	...
 
 
 
 Documentation
 ==============
-https://openlayers.org
-https://pgrouting.org/
-https://github.com/crunchydata/pg_tileserv
-https://github.com/crunchydata/pg_featureserv
+https://openlayers.org<br>
+https://pgrouting.org/<br>
+https://github.com/crunchydata/pg_tileserv<br>
+https://github.com/crunchydata/pg_featureserv<br>
 
    
