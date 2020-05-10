@@ -41,6 +41,19 @@ The detail for the state will be displayed as below:
 .. image:: _static/geodjango-app2.png
    
 Click the Return to Main Page to return to the app homepage.
+
+Django Admin
+==============
+
+The Django Admin Panel is located at::
+
+   	http://domain.com:8000/admin
+   
+If accessing via IP, substitute the IP for 'domain.com' above.
+   
+The Django admin password is saved on disk at::
+
+	/root/auth.txt
    
 
 Structure
@@ -220,17 +233,9 @@ It has the following structure:
 
 
 
-
-Django Admin
+Documentation
 ==============
 
-The Django Admin Panel is located at::
+https://docs.djangoproject.com/en/3.0/ref/contrib/gis/
 
-   	http://domain.com:8000/admin
-   
-If accessing via IP, substitute the IP for 'domain.com' above.
-   
-The Django admin password is saved on disk at::
-
-	/root/auth.txt
    
