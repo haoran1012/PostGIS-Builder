@@ -13,7 +13,7 @@ GeoDjango
 
 .. contents:: Table of Contents
 
-=================
+
 Access
 =================
 
@@ -28,7 +28,7 @@ It can also be access directly via url at::
    http://domain.com:4000
    
    
-=================
+
 Usage
 =================
 
@@ -42,7 +42,7 @@ The detail for the state will be displayed as below.
    
 Click the Return to Main Page to return to the app homepage.
    
-=============
+
 Structure
 =============
 
@@ -220,7 +220,7 @@ It has the following structure:
 
 
 
-=============
+
 File Locations
 ==============
 
