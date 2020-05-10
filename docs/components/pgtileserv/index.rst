@@ -19,6 +19,30 @@ pg_tileserv is installed as a systemd service during installation.
 
 The service can be started and stopped via command line or Webmin.
 
+The service file contents are show below.
+
+.. code-block:: console
+   :linenos:
+
+	[Unit]
+	Description=PG TileServ
+	After=multi-user.target
+
+	[Service]
+	User=pgis
+	WorkingDirectory=/opt/pg_tileserv
+	Type=simple
+	Restart=always
+	ExecStart=/opt/pg_tileserv/pg_tileserv --config /opt/pg_tileserv/config/pg_tileserv.toml
+	
+	[Install]
+	WantedBy=multi-user.target
+
+The file is installed at::
+
+	/etc/systemd/system/pg_tileserv.service
+
+
 Command Line
 ============
 
@@ -45,11 +69,13 @@ On installation, a database is created called postgisftw.
 
 This database contains the demo data.
 
-A user pgis is also created and given permission to the database.  The password for pgis is displayed at the end of installation as well as saved to /root/auth.txt
+A user pgis is also created and given permission to the database.  
+
+The password for pgis is displayed at the end of installation as well as saved to /root/auth.txt
 
  
 Structure
-=========
+==========
 
 pg_tileserv is installed by default at::
 
@@ -76,18 +102,10 @@ Configuration File
 On installation, the pg_tileserv.toml configuration file is updated to include the postgisftw connection inforation::
 
 	DbConnection = "postgresql://pgis:G84iwLdL9jeyA7IiwkTmWhyHwKR41Qxz@localhost/postgisftw"
+	
 
-
-2. Tick the PostGIS select button and then click the Save button as show below:
-
-.. image:: _static/postgis-enable.png 	
+https://github.com/CrunchyData/pg_tileserv
 
  
-3. Once PostGIS has been installed on a target database, you can then return to install additional extensions:
-
-.. image:: _static/postgis-install-more.png 	
-	
-.. Note:: 
-   You can also un-install Extensions using above. 
 
 
