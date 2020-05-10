@@ -23,7 +23,7 @@ This app is included in the CrunchyData examples and is simply configured for us
 
 It can be access via the pg_tileserv tab on the home page:
 
-.. image:: _static/pgtile-tab.png
+.. image:: _static/pgtile-tabs.png
 
 It can also be access directly via url at::
 
