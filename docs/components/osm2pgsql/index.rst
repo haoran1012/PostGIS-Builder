@@ -138,7 +138,10 @@ osm2pgsql usage can be found using the 'osm2pgsl --help' command:
    Run osm2pgsql --help --verbose (-h -v) for a full list of options.
 
 
+Troubleshooting
+===============
 
+If the above commands produce 'osm2pgsql command not found', close your existing SSH session and create a new one.
 
 Documentation
 =============
