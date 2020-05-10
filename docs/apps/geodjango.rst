@@ -13,8 +13,9 @@ GeoDjango
 
 .. contents:: Table of Contents
 
+=================
 GeoDjango App
-==================
+=================
 
 A basic GeoDjango app usign PostGIS is created upon installation.
 
