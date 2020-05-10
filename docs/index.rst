@@ -40,6 +40,7 @@ PostGIS Module
     :maxdepth: 2
     :caption: Apps
 
+    apps/home
     apps/geodjango
     apps/geojson
     apps/pgtileserv
