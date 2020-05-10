@@ -78,9 +78,12 @@ On installation, the pg_tileserv and pg_featureserv urls are set in the html doc
 
 Documentation
 ==============
-https://openlayers.org<br>
-https://pgrouting.org/<br>
-https://github.com/crunchydata/pg_tileserv<br>
+https://openlayers.org
+
+https://pgrouting.org/
+
+https://github.com/crunchydata/pg_tileserv
+
 https://github.com/crunchydata/pg_featureserv<br>
 
    
