@@ -21,7 +21,7 @@ A web application employing pg_tileserv, PgRouting, and pg_featurserv is enabled
 
 This app is included in the CrunchyData examples and is simply configured for use.
 
-It can be access via the GeoDjango tab on the home page:
+It can be access via the pg_tileserv tab on the home page:
 
 .. image:: _static/pgtile-tab.png
 
@@ -36,7 +36,7 @@ Usage
 
 Once accessed using above, the app will appear as shown below:
 
-.. image:: _static/pgtile-app.png
+.. image:: _static/pgtile-app1.png
 
 Click anywhere to select a start location, then click elswhere for an end location.
 
