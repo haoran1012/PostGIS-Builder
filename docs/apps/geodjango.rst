@@ -220,13 +220,6 @@ It has the following structure:
 
 
 
-.. image:: _static/postgresql-tab.png
-
-You can also use the manager to install and update packages as well.
-
-As certain packages require EPEL for CentOS, the EPEL repository is installed as well when installing on CentOS.
-
-.. image:: _static/PostgreSQL-Repo-Manager.png
 =============
 File Locations
 ==============
@@ -239,25 +232,6 @@ On Ubuntu, the PostgreSQL direcotry is located at::
    
    /etc/postgresql/12/main
    
-=============
-The pg_hba.conf File
-====================
-
-On installation via the Wizard, PostgreSQL is configured for use with SSL and uses md5 authentication for all users and databases.
-
-.. code-block:: bash
-   :linenos:
-   
-   	local	all all 							trust
-   	host	all all 127.0.0.1	255.255.255.255	md5
-	host	all all 0.0.0.0/0					md5
-	host	all all ::1/128						md5
-	hostssl all all 127.0.0.1	255.255.255.255	md5
-	hostssl all all 0.0.0.0/0					md5
-	hostssl all all ::1/128						md5
-
-
-
 The postgresql.conf File
 ========================
 
