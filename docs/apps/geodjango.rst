@@ -21,7 +21,7 @@ A basic GeoDjango app usign PostGIS is created upon installation.
 
 It can be access via the GeoDjango tab on the home page:
 
-.. image:: _static/postgresql-tab.png
+.. image:: _static/geodjango-tab.png
 
 It can also be access directly via url at::
 
@@ -34,11 +34,11 @@ Usage
 
 Once accessed using above, click the link for a state as show below:
 
-.. image:: _static/postgresql-tab.png
+.. image:: _static/geodjango-app.png
 
-The detail for the state will be displayed as below.
+The detail for the state will be displayed as below:
 
-   http://domain.com:4000
+.. image:: _static/geodjango-app2.png
    
 Click the Return to Main Page to return to the app homepage.
    
