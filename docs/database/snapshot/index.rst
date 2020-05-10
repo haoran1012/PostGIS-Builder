@@ -20,7 +20,7 @@ To take a snapshot, click the Snapshot tab as shown below.
       .. image:: _static/snapshot-tab.png
 
       
-From here, select the database you wish to Snapshot from the drop-down as shown below and click the Snapshot button.  
+From here, select the database you wish to Snapshot from the drop-down as shown below and click the Create button.  
 
 
       .. image:: _static/snapshot-panel.png
