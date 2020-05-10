@@ -13,87 +13,74 @@ pg_tileserv
 
 .. contents:: Table of Contents
 
-Repository Manager
-==================
 
-The Repository installer and manager allows you to install your selected version of the PostgreSQL Repository.
+Access
+=================
 
-It can be access via the Pg Installer tab as shown below:
+A web application employing pg_tileserv, PgRouting, and pg_featurserv is enabled upon installation.
 
-.. image:: _static/postgresql-tab.png
+This app is included in the CrunchyData examples and is simply configured for use.
 
-You can also use the manager to install and update packages as well.
+It can be access via the GeoDjango tab on the home page:
 
-As certain packages require EPEL for CentOS, the EPEL repository is installed as well when installing on CentOS.
+.. image:: _static/pgtile-tab.png
 
-.. image:: _static/PostgreSQL-Repo-Manager.png
+It can also be access directly via url at::
 
-File Locations
+   http://domain.com/openlayers-pgrouting.html
+   
+   
+
+Usage
+=================
+
+Once accessed using above, the app will appear as shown below:
+
+.. image:: _static/pgtile-app.png
+
+Click anywhere to select a start location, then click elswhere for an end location.
+
+The route will be displayed as below:
+
+.. image:: _static/pgtile-app.png
+   
+
+Django Admin
 ==============
 
-On CentOS, the PostgreSQL config direcotry is located at::
+The Django Admin Panel is located at::
 
-   /var/lib/pgsql/12/data
+   	http://domain.com:8000/admin
    
-On Ubuntu, the PostgreSQL direcotry is located at::
+If accessing via IP, substitute the IP for 'domain.com' above.
    
-   /etc/postgresql/12/main
+The Django admin password is saved on disk at::
+
+	/root/auth.txt
    
-The pg_hba.conf File
-====================
 
-On installation via the Wizard, PostgreSQL is configured for use with SSL and uses md5 authentication for all users and databases.
+Structure
+=============
 
-.. code-block:: bash
-   :linenos:
+The app is located at:
+
+	/vaw/www/html/pgrouting-openlayers.html
+	/var/www/html/states.json
+
+On installation, the pg_tileserv and pg_featureserv urls are set in the html document.
+
+	var vectorUrl = "http://206.189.186.146:7800/public.ways/{z}/{x}/{y}.pbf";
+
+    	var url = "http://206.189.186.146:9000/functions/boston_find_route/items.json";
+
+
+
+
+Documentation
+==============
+https://openlayers.org
+https://pgrouting.org/
+https://github.com/crunchydata/pg_tileserv
+https://github.com/crunchydata/pg_featureserv
+
    
-   	local	all all 							trust
-   	host	all all 127.0.0.1	255.255.255.255	md5
-	host	all all 0.0.0.0/0					md5
-	host	all all ::1/128						md5
-	hostssl all all 127.0.0.1	255.255.255.255	md5
-	hostssl all all 0.0.0.0/0					md5
-	hostssl all all ::1/128						md5
-
-
-
-The postgresql.conf File
-========================
-
-On installation via the Wizard, PostgreSQL is configured to accept connections on all interfaces as well as SSL connections.
-
-.. code-block:: bash
-   :linenos:
-
-	#------------------------------------------------------------------------------
-	# CONNECTIONS AND AUTHENTICATION
-	#------------------------------------------------------------------------------
-
-	# - Connection Settings -
-	
-	listen_addresses = '*'
-	)
-	
-	
-	# - SSL -
-
-	ssl = on
-   
-Above are excepts.
-
-Version
-=======
-
-GeoHelm has been tested with PostgreSQL 10, 11 and 12.
-
-Webmin PostgreSQL Module
-========================
-
-On installation, the native PostgreSQL Database Server module is also activated.
-
-It is located under Servers > PostgreSQL Database Server
-
-.. image:: _static/webmin-postgresql.png
-
-
-
