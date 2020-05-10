@@ -14,7 +14,7 @@ GeoDjango
 .. contents:: Table of Contents
 
 =================
-GeoDjango App
+Access
 =================
 
 A basic GeoDjango app usign PostGIS is created upon installation.
@@ -26,6 +26,21 @@ It can be access via the GeoDjango tab on the home page:
 It can also be access directly via url at::
 
    http://domain.com:4000
+   
+   
+=================
+Usage
+=================
+
+Once accessed using above, click the link for a state as show below:
+
+.. image:: _static/postgresql-tab.png
+
+The detail for the state will be displayed as below.
+
+   http://domain.com:4000
+   
+Click the Return to Main Page to return to the app homepage.
    
 =============
 Structure
@@ -212,7 +227,7 @@ You can also use the manager to install and update packages as well.
 As certain packages require EPEL for CentOS, the EPEL repository is installed as well when installing on CentOS.
 
 .. image:: _static/PostgreSQL-Repo-Manager.png
-
+=============
 File Locations
 ==============
 
@@ -224,6 +239,7 @@ On Ubuntu, the PostgreSQL direcotry is located at::
    
    /etc/postgresql/12/main
    
+=============
 The pg_hba.conf File
 ====================
 
