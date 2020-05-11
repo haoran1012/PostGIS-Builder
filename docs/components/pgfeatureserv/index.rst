@@ -54,6 +54,13 @@ Service commands:
 
    root@postgis:~# service pg_featureserv stop | start 
    
+Access
+============
+
+pg_tileserv runs of port 9000 and can be accessed at http://doamin.com:9000
+
+You can change the port via the pg_featurserv.toml file located under /opt/pg_featurserv/config
+   
    
 Webmin
 ============
