@@ -13,10 +13,15 @@ Security
 Below are common items for securing your instance.
 
 Disable root login
+
 Change SSH port to non-standard (22) port
+
 Change Webmin port to non-standard (10000) port
+
 Install IP Tables
+
 Restrict access to Webmin to your IP
+
 Disable all services not in use
 
 .. note::
