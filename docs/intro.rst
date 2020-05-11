@@ -7,6 +7,7 @@ Overview
 PostGIS Builder is a script and optional Webmin Module for building a complete PostGIS stack.
 
 PostGIS Builder installs and configures the latest stable versions of 
+
 * PostgreSQL
 * PostGIS
 * PgRouting
