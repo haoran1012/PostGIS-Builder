@@ -12,7 +12,7 @@ from sphinx.locale import _
 from sphinx_rtd_theme import __version__
 
 
-project = u'AcuGIS PostGIS Module'
+project = u'AcuGIS PostGIS Builder'
 copyright = u'2020, Cited, Inc.'
 slug = re.sub(r'\W+', '-', project.lower())
 version = __version__
