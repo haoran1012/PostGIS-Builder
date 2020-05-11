@@ -1,4 +1,4 @@
-PostGIS Module
+PostGIS Builder
 ==================================================
 
  .. image:: _static/postgis.png
