@@ -53,6 +53,12 @@ Service commands:
 
    root@postgis:~# service pg_tileser stop | start 
    
+Access
+============
+
+pg_tileserv runs of port 7800 and can be accessed at http://doamin.com:7800
+
+You can change the port via the pg_tileserv.toml file located under /opt/pg_tileserv/config
    
 Webmin
 ============
