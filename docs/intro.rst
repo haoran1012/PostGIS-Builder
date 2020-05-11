@@ -31,7 +31,7 @@ It can be installed on CentOS 8, Ubuntu 18, or Ubuntu 20.
 
 All installed components are non-forked and un-modified and installed via the projects archive.
 
-.. image:: _static/geohelm-header.png
+.. image:: _static/WelcomeApp.png
 
 
 System Requirements
