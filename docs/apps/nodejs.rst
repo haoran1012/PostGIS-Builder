@@ -19,15 +19,17 @@ Access
 
 A web application, PostGIS Preview, employing NodeJS is enabled upon installation.
 
+The application is an Open Source application created by:
+
 https://github.com/NYCPlanning/labs-postgis-preview
 
-It can be access via the pg_tileserv tab on the home page:
+It can be access via the NodeJS tab on the home page:
 
 .. image:: _static/nodejs-tab.png
 
 It can also be access directly via url at::
 
-   http://domain.com/openlayers-pgrouting.html
+  http://domain.com:4000
    
    
 
@@ -36,11 +38,15 @@ Usage
 
 Once accessed using above, the app will appear as shown below:
 
-.. image:: _static/nodejs-app.png
+.. image:: _static/nodejs-app-gis.png
 
 Enter a query and click submit.  For example::
 
 	select * from states_states;
+	
+The layer will now appear as shown below:
+
+.. image:: _static/nodejs-app.png
 
 To view the underlying data, click the data tab as shown below.
 
