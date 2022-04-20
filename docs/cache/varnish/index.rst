@@ -21,8 +21,6 @@ Varnish Cache is an HTTP accelerator.
 
 By caching output, you reduce calls the the database and speed site performance.
 
-Varnish Cache website:  
-   
    
 
 Usage
@@ -50,16 +48,12 @@ The main varnish configuration file, default.vcl is located at::
 
 	/etc/varnish/default.vcl
 		
-The content will look similar to below
+The content will contain a backend default similar to below::
 
-.. code-block:: console
-   :linenos:
-		vcl 4.0;
-
-		backend default {
-    		.host = "127.0.0.1";
-    		.port = "8080";
-		}
+			backend default {
+    			.host = "127.0.0.1";
+    			.port = "8080";
+			}
 		
 Note the backend port, which is the port that Apache is on.
 
@@ -67,23 +61,18 @@ Similarly, Varnish itself is run on port 80.  This is defined in the varnish.ser
 
 /etc/systemd/system/varnish.service.d/varnish.conf
 
-The contents of varnish.conf are as below.
+The contents of varnish.conf are as below::
 
-Not that Varnish is accepting requests on 80 and proxy HTTPS requests to 8443
-
-.. code-block:: console
-   :linenos:
-
-	[Service]
-	ExecStart=
-	ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -a localhost:8443,PROXY -p feature=+http2 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,1g
+ [Service]
+ ExecStart=
+ ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -a localhost:8443,PROXY -p feature=+http2 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,1g
 		
-
+Note that Varnish is accepting requests on 80 and proxy HTTPS requests to 8443
 
 HTTPS
 =========
 
-Because Varnish does not work with HTTPS, we use Hitch to handle all HTTPS requests, which are converted to HTTP for Varnish.
+Because Varnish does not work with HTTPS, we use Hitch to handle all HTTPS requests.
 
 
 Documentation
