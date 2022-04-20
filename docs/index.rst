@@ -38,11 +38,10 @@ PostGIS Builder
     
 .. toctree::
     :maxdepth: 2
-    :caption: Cache
+    :caption: Varnish Cache
 
     cache/varnish/index
     cache/htich/index
-    cache/ttl/index
     
     
 .. toctree::
