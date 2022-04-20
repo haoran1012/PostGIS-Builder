@@ -42,6 +42,7 @@ PostGIS Builder
 
     cache/varnish/index
     cache/hitch/index
+    cache/apache/index
     
     
 .. toctree::
