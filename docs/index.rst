@@ -38,6 +38,15 @@ PostGIS Builder
     
 .. toctree::
     :maxdepth: 2
+    :caption: Cache
+
+    cache/varnish/index
+    cache/htich/index
+    cache/ttl/index
+    
+    
+.. toctree::
+    :maxdepth: 2
     :caption: Apps
 
     apps/home
