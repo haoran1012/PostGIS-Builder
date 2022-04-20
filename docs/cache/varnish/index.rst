@@ -21,39 +21,77 @@ Varnish Cache is an HTTP accelerator.
 
 By caching output, you reduce calls the the database and speed site performance.
 
-.. image:: _static/leaflet-tab.png
-
-It can also be access directly via url at::
-
-   http://domain.com/LeafletJSDemo.html
+Varnish Cache website:  https://varnish-cache.org
    
    
 
 Usage
 =================
 
-Once accessed using above, the app will appear as shown below:
+The most common function is clearing Cache after changes are made.
 
-.. image:: _static/leaflet-app1.png
+To clear cache, click the Clear Cache button as show below:
 
-Click on the US layer to view the getFeature info for the State.
+.. image:: _static/varnish-clear-cache.png
 
-The data will be displayed as below:
+If Varnished has stopped for any reason, a Start button will appear as below:
 
-.. image:: _static/leaflet-app.png
+.. image:: _static/varnish-start.png
+
+You can also stop/start/restart Varnish via command line::
+
+  service varnish stop | stop | restart | status
    
 
-Structure
+Configuration
 =============
 
-The app is located at::
+The main varnish configuration file, default.vcl is located at::
 
-	/vaw/www/html/LeafletJSDemo.html
+	/etc/varnish/default.vcl
 		
-On installation, data from PostgreSQL is exported to GeoJson format and saved to::
+The content will look similar to below
 
-	/var/www/html/states.json
-	
+.. code-block:: console
+   :linenos:
+		#
+		# This is an example VCL file for Varnish.
+		#
+		# It does not do anything by default, delegating control to the
+		# builtin VCL. The builtin VCL is called when there is no explicit
+		# return statement.
+		#
+		# See the VCL chapters in the Users Guide at https://www.varnish-cache.org/docs/
+		# and https://www.varnish-cache.org/trac/wiki/VCLExamples for more examples.
+
+		# Marker to tell the VCL compiler that this VCL has been adapted to the
+		# new 4.0 format.
+		vcl 4.0;
+
+		# Default backend definition. Set this to point to your content server.
+		backend default {
+    		.host = "127.0.0.1";
+    		.port = "8080";
+		}
+		
+Note the backend port, which is the port that Apache is on.
+
+Similarly, Varnish itself is run on port 80.  This is defined in the varnish.service file located at::
+
+/etc/systemd/system/varnish.service.d/varnish.conf
+
+The contents of varnish.conf are as below.
+
+Not that Varnish is accepting requests on 80 and proxy HTTPS requests to 8443
+
+.. code-block:: console
+   :linenos:
+
+		[Service]
+		ExecStart=
+		ExecStart=/usr/sbin/varnishd -j unix,user=vcache -F -a :80 -a localhost:8443,PROXY -p feature=+http2 -f /etc/varnish/default.vcl -S /etc/varnish/secret -s malloc,1g
+		
+
 
 Content
 =========
