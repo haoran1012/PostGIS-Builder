@@ -41,7 +41,7 @@ PostGIS Builder
     :caption: Varnish Cache
 
     cache/varnish/index
-    cache/htich/index
+    cache/hitch/index
     
     
 .. toctree::
